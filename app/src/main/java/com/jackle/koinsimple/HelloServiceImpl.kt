@@ -1,11 +1,11 @@
 package com.jackle.koinsimple
 
 
-interface HelloService {
-    fun hello(): String
+interface HelloRepository {
+    fun giveHello(): String
 }
 
-class HelloServiceImpl(private val helloMessageData: HelloMessageData) : HelloService  {
+class HelloRepositoryImpl() : HelloRepository  {
 
-    override fun hello() = "Hey, ${helloMessageData.message}"
+    override fun giveHello() = "Hello Koin"
 }
