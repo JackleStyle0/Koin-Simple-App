@@ -9,23 +9,13 @@ import org.koin.core.inject
 import org.koin.dsl.module
 
 class HelloApplication: Application() {
-
-    val appModule = module {
-
-        // single instance of HelloRepository
-        single<HelloRepository> { HelloRepositoryImpl() }
-
-        // Simple Presenter Factory
-        factory { MySimplePresenter(get()) }
-    }
-
     override fun onCreate() {
         super.onCreate()
         // Start Koin
         startKoin{
             androidLogger()
             androidContext(this@HelloApplication)
-            modules(appModule)
+            modules(listOf(databaseModule, repositoryModule, viewModeiModule))
         }
     }
 }

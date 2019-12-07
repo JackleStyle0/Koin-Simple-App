@@ -1,11 +1,14 @@
 package com.jackle.koinsimple
 
+import android.util.Log
+import androidx.lifecycle.LiveData
+
 
 interface HelloRepository {
-    fun giveHello(): String
+    fun getAllMenu(): LiveData<List<Menu>>
 }
 
-class HelloRepositoryImpl() : HelloRepository  {
+class HelloRepositoryImpl(val menuDao: MenuDao) : HelloRepository  {
 
-    override fun giveHello() = "Hello Koin"
+    override fun getAllMenu(): LiveData<List<Menu>> = menuDao.getAllMenu()
 }
